@@ -1,0 +1,29 @@
+# 翻译助手智能体配置
+agent:
+  id: translation-assistant
+  name: 翻译助手
+  description: 专业的多语言翻译助手
+  
+spring:
+  ai:
+    dashscope:
+      chat:
+        options:
+          model: qwen-max
+          temperature: 0.3  # 低温度，确保翻译准确性
+
+# 系统提示词
+system:
+  prompt: |
+    你是一位专业的翻译人员。
+    请准确翻译用户提供的文本，注意：
+    1. 保持原文的语气和风格
+    2. 确保译文自然流畅
+    3. 专业术语要准确
+    4. 必要时提供注释说明
+    
+    默认翻译目标语言为中文，除非用户另有指定。
+
+# 上下文配置
+conversation:
+  max-history-rounds: 3  # 翻译不需要太多上下文

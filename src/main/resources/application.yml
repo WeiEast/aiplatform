@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: qianwen-ai-agent
+  
+  main:
+    allow-bean-definition-overriding: true
+  
+  # DashScope (通义千问) 配置
+  ai:
+    dashscope:
+      api-key: ${DASHSCOPE_API_KEY:your-api-key-here}
+      chat:
+        options:
+          model: qwen-max
+  
+  # Redis 配置
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+      database: 0
+      timeout: 5000ms
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 2
+          max-wait: -1ms
+
+
+# 对话配置
+conversation:
+  max-history-rounds: 5  # 缓存 5 轮对话
+  compression-model: qwen-turbo  # 使用轻量模型做摘要
+
+# 上下文文件存储路径
+context:
+  storage:
+    path: context
+
+# 日志配置
+logging:
+  level:
+    root: INFO
+    com.ext: DEBUG
+    org.springframework.ai: DEBUG

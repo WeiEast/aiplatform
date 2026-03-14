@@ -1,0 +1,34 @@
+# RAG 知识库助手配置
+agent:
+  id: rag-assistant
+  name: 知识库助手
+  description: 基于知识库的问答助手
+  
+spring:
+  ai:
+    dashscope:
+      chat:
+        options:
+          model: qwen-max
+          temperature: 0.6
+
+# 系统提示词
+system:
+  prompt: |
+    你是一个基于知识库的智能问答助手。
+    请根据检索到的相关信息回答用户问题。
+    回答时请：
+    1. 优先基于检索到的信息
+    2. 标注信息来源
+    3. 如果知识库中没有相关信息，请如实告知
+    4. 保持回答的专业性和准确性
+
+# RAG 配置
+rag:
+  enabled: true
+  top-k: 4  # 检索 4 个最相关文档
+  similarity-threshold: 0.7  # 相似度阈值
+
+# 上下文配置
+conversation:
+  max-history-rounds: 5
