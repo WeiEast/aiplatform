@@ -44,7 +44,6 @@ class RagServiceTest {
     }
 
     @Test
-    @DisplayName("添加文档 - 正常场景")
     @DisplayName("测试将单个文档添加到向量库")
     void testAddDocument_Success() {
         // 准备测试数据
@@ -124,7 +123,7 @@ class RagServiceTest {
     @DisplayName("删除文档 - 成功")
     void testDeleteDocument_Success() {
         String docId = "doc-to-delete";
-        when(vectorStore.delete(anyList())).thenReturn(List.of());
+//        when(vectorStore.delete(anyList())).thenReturn(List.of());
 
         boolean result = ragService.deleteDocument(docId);
 
